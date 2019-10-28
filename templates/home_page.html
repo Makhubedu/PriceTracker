@@ -1,0 +1,27 @@
+{% extends "layout.html" %} {% block title %} Home {% endblock title %} {% block header %} Welcome To Game Price Tracker {% endblock header %} {% block body %}
+
+<form action="{{url_for('track')}}" method="POST">
+
+    <div class="form-group">
+        <input class="form-control" type="text" name="name" placeholder="Enter Your Name">
+    </div>
+
+    <div class="form-group">
+        <input class="form-control" type="text" name="email" placeholder="Enter Your Email">
+    </div>
+
+    <div class="form-group">
+        <input class="form-control" type="text" name="item-url" placeholder="Enter The Item URL">
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit">Track Here</button>
+    </div>
+
+
+
+</form>
+
+
+
+{% endblock body %}
