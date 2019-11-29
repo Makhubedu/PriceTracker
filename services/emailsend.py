@@ -1,6 +1,8 @@
 import smtplib
 import os
+from .get_price import GamePrice
 from email.mime.text import MIMEText
+
 class sendEmail():
     def __init__(self,username,user_email,link):
         self.username = username
@@ -13,8 +15,9 @@ class sendEmail():
         #Accessing the email and the password in environment variables
         MY_EMAIL_ADDRESS = os.getenv("EMAIL_ADDRESS")
         MY_PASSWORD = os.getenv("MY_PASSWORD")
+        scrapper = GamePrice(self.link)
 
-        body = f"\n\nDear {self.username} \n\n\nThe Item that you tracked has changed price ,\n check it out here {self.link}\n\nThank You\n\nPrice Checker"
+        body = f"\n\nDear {self.username}\n\n\nThe price for the item you tracked has changed,\n check it out here {self.link}\nPrice Is {scrapper.get_the_price()}\nThe item name is{scrapper.get_name()}\nThank You\n\nPrice Checker"
 
         # Setting up the email text
         msg = MIMEText(body)
@@ -37,4 +40,3 @@ class sendEmail():
             print("Email Has Been Send!!")
         except:
             print("Something Went Wrong")
-

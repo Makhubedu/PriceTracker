@@ -4,6 +4,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session,sessionmaker
 from services.emailsend import sendEmail
 
+
 #setting up the flask app
 app = Flask(__name__)
 
@@ -23,8 +24,8 @@ def track():
     username = request.form.get("name")
     user_email = request.form.get("email")
     item_link = request.form.get("item")
-   # derrick = sendEmail("Derrick","lefaderrick@gmail.com","https://youtube.com")
-   # derrick.email()
+    derrick = sendEmail(f"{username}",f"{user_email}",f"{item_link}")
+    derrick.email()
     print(username)
     print(user_email)
     print(item_link)
