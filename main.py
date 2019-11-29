@@ -29,5 +29,5 @@ def track():
     print(username)
     print(user_email)
     print(item_link)
-    return ("hey Your here Now !!")
+    return render_template("success.html")
 
