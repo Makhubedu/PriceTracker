@@ -1,5 +1,6 @@
 {% extends "layout.html" %} {% block title %} Home {% endblock title %} {% block header %} Welcome To Game Price Tracker {% endblock header %} {% block body %}
 
+<center>
 <form action="{{url_for('track')}}" method="POST">
 
     <div class="form-group">
@@ -21,6 +22,7 @@
 
 
 </form>
+</center>
 
 
 

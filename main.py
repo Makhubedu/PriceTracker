@@ -9,13 +9,13 @@ from services.emailsend import sendEmail
 app = Flask(__name__)
 
 #setting up the database
-#database_url = os.getenv("DATABSE_URL")
-#engine = create_engine(database_url)
-#db = scoped_session(sessionmaker(bind=engine))
+database_url = os.getenv("DATABASE_URL")
+engine = create_engine(database_url)
+db = scoped_session(sessionmaker(bind=engine))
+print(database_url)
 
 #flask rountes
 @app.route("/")
-
 def home_page():
     return render_template("home_page.html")
 
@@ -24,7 +24,11 @@ def track():
     username = request.form.get("name")
     user_email = request.form.get("email")
     item_link = request.form.get("item")
-    derrick = sendEmail(f"{username}",f"{user_email}",f"{item_link}")
+    
+    user_data = db.execute("INSERT INTO user_prices(username,email,link) VALUES (:username, :email, :link)",
+    {"username":username,"email":user_email,"link":item_link})
+    db.commit()
+    derrick = sendEmail(username,user_email,item_link)
     derrick.email()
     print(username)
     print(user_email)
