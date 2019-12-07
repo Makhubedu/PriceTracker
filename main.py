@@ -3,6 +3,8 @@ from flask import Flask,render_template,request
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session,sessionmaker
 from services.get_price import GamePrice
+from flask.ext.heroku import heroku
+
 
 # The flask framework was used to the application
 # POSTGRES SQL was used as the DBMS of choice
@@ -12,6 +14,7 @@ from services.get_price import GamePrice
 
 #setting up the flask app
 app = Flask(__name__)
+heroku = heroku(app)
 
 #setting up the database
 database_url = os.getenv("DATABASE_URL")
