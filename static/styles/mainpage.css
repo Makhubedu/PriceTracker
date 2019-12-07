@@ -9,6 +9,11 @@ header {
 
 .form-group {
     width: 50%;
+    height: 30%;
     align-items: center;
-    background-color: #d2e7d2;
+}
+
+.form-control {
+    height: 40px;
+    font-size: 20px;
 }

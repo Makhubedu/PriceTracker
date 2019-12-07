@@ -1,9 +1,10 @@
-import smtplib
-import os
-from .get_price import GamePrice
+import smtplib #Python email library thatwas used.
+import os # used for keeping the email,database and password save.
+from .get_price import GamePrice #accessing the web scrapping class that have created
 from email.mime.text import MIMEText
 
 class sendEmail():
+    #Initializing the method
     def __init__(self,username,user_email,link):
         self.username = username
         self.user_email = user_email
