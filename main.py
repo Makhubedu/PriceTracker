@@ -15,6 +15,7 @@ from flask.ext.heroku import heroku
 #setting up the flask app
 app = Flask(__name__)
 heroku = heroku(app)
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 #setting up the database
 database_url = os.getenv("DATABASE_URL")
