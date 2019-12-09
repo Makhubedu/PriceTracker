@@ -4,8 +4,6 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session,sessionmaker
 from services.get_price import GamePrice
 from flask.ext.heroku import heroku
-
-
 # The flask framework was used to the application
 # POSTGRES SQL was used as the DBMS of choice
 #SQLALCHEMY is used to make working with database with python easy
@@ -104,4 +102,6 @@ def track():
 # You willl only get here if all thing are well. :)
     return render_template("success.html",name=username,email=user_email)
 
+if __name__=="__main__":
+    app.run()
 #copyright Derrick MAkhubedu
