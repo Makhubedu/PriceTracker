@@ -12,7 +12,7 @@ from services.get_price import GamePrice
 
 #setting up the flask app
 app = Flask(__name__)
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 
 #setting up the database
 database_url = os.getenv("DATABASE_URL")
@@ -40,15 +40,14 @@ def track():
         title = "Wrong Link"
         sorry = "Sorry"
         heading = "Wrong Link"
-        link = "capture.PNG"
+        link = "https://photos.google.com/search/_tra_/photo/AF1QipOXEmdL1K991WPagHJ64ewdJmuIZ64KIr_LUlDE"
         message = "You forgot to Enter the link, Please go back and Enter The Correct one."
-
         return render_template("wrong_link.html",message=message,heading=heading,sorry=sorry,title=title,link=link)
     elif item_link[:54] != "https://www.game.co.za/game-za/en/All-Game-Categories/":
         title = "Wrong Link"
         sorry = "Sorry"
         heading = "Wrong Link"
-        link = "capture.PNG"
+        link = "https://photos.google.com/search/_tra_/photo/AF1QipOXEmdL1K991WPagHJ64ewdJmuIZ64KIr_LUlDE"
         message = "You Enter a wrong link, Please go back and Enter The Correct one."
         return render_template("wrong_link.html",message=message,heading=heading,sorry=sorry,title=title,link=link)
     elif username == "":
@@ -70,7 +69,8 @@ def track():
         sorry = "Sorry"
         title = "No Link"
         heading = "Oops!!"
-        link = "/static/capture.PNG"
+        link = "https://www.pngtube.com/myfile/full/59-592368_confused-emoji-disappointed-emoji.png"
+        
         return render_template("error_layout.html",message=message,heading=heading,sorry=sorry,title=title,link=link)
 
 # Now that i am done handling the small exceptions. I am going for the database
