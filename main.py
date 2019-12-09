@@ -3,7 +3,7 @@ from flask import Flask,render_template,request
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session,sessionmaker
 from services.get_price import GamePrice
-from flask.ext.heroku import heroku
+
 # The flask framework was used to the application
 # POSTGRES SQL was used as the DBMS of choice
 #SQLALCHEMY is used to make working with database with python easy
@@ -12,7 +12,6 @@ from flask.ext.heroku import heroku
 
 #setting up the flask app
 app = Flask(__name__)
-heroku = heroku(app)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 #setting up the database
@@ -103,5 +102,5 @@ def track():
     return render_template("success.html",name=username,email=user_email)
 
 if __name__=="__main__":
-    app.home_page()
+    app.run()
 #copyright Derrick MAkhubedu
