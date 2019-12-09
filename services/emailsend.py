@@ -41,3 +41,5 @@ class sendEmail():
             print("Email Has Been Send!!")
         except:
             print("Something Went Wrong")
+
+            #copyright Derrick MAkhubedu

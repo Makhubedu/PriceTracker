@@ -40,16 +40,14 @@ def track():
         title = "Wrong Link"
         sorry = "Sorry"
         heading = "Wrong Link"
-        link = "https://photos.google.com/search/_tra_/photo/AF1QipOXEmdL1K991WPagHJ64ewdJmuIZ64KIr_LUlDE"
         message = "You forgot to Enter the link, Please go back and Enter The Correct one."
-        return render_template("wrong_link.html",message=message,heading=heading,sorry=sorry,title=title,link=link)
+        return render_template("wrong_link.html",message=message,heading=heading,sorry=sorry,title=title)
     elif item_link[:54] != "https://www.game.co.za/game-za/en/All-Game-Categories/":
         title = "Wrong Link"
         sorry = "Sorry"
         heading = "Wrong Link"
-        link = "https://photos.google.com/search/_tra_/photo/AF1QipOXEmdL1K991WPagHJ64ewdJmuIZ64KIr_LUlDE"
         message = "You Enter a wrong link, Please go back and Enter The Correct one."
-        return render_template("wrong_link.html",message=message,heading=heading,sorry=sorry,title=title,link=link)
+        return render_template("wrong_link.html",message=message,heading=heading,sorry=sorry,title=title)
     elif username == "":
         title = "No User Name"
         heading = "Oops!!"
