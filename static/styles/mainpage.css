@@ -15,10 +15,8 @@ header {
 
 ::placeholder {
     color: #ec008c;
-    font-size: 0.8em;
 }
 
 .form-control {
-    height: 40px;
     font-size: 0.8em;
 }
