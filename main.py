@@ -1,8 +1,11 @@
 import os
+import psycopg2
+import dotenv
 from flask import Flask,render_template,request
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session,sessionmaker
 from services.get_price import GamePrice
+from services.emailsend import sendEmail
 
 # The flask framework was used to the application
 # POSTGRES SQL was used as the DBMS of choice
@@ -15,7 +18,8 @@ app = Flask(__name__)
 
 
 #setting up the database
-database_url = os.getenv("DATABASE_URL")
+database_url = os.getenv("MY_DATABASE_URL")
+
 engine = create_engine(database_url)
 db = scoped_session(sessionmaker(bind=engine))
 
@@ -30,6 +34,9 @@ def track():
     username = request.form.get("name")
     user_email = request.form.get("email")
     item_link = request.form.get("item")
+    print(username)
+    print(user_email)
+    print(item_link)
 # I am calling the get get price class here in order to use get_price method
     find_price = GamePrice(item_link)
     price = find_price.get_the_price()

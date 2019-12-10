@@ -1,7 +1,9 @@
 import smtplib #Python email library thatwas used.
 import os # used for keeping the email,database and password save.
+from dotenv import load_dotenv
 from .get_price import GamePrice #accessing the web scrapping class that have created
 from email.mime.text import MIMEText
+load_dotenv()
 
 class sendEmail():
     #Initializing the method
@@ -11,23 +13,22 @@ class sendEmail():
         self.link = link
 
     def email(self):
-
-
         #Accessing the email and the password in environment variables
-        MY_EMAIL_ADDRESS = os.getenv("EMAIL_ADDRESS")
-        MY_PASSWORD = os.getenv("MY_PASSWORD")
+        database_url = os.getenv("MY_DATABASE_URL")
+        EMAIL_ADDRESS = os.getenv("MY_EMAIL_ADDRESS")
+        MY_PASSWORD = os.getenv("PASSWORD")
         scrapper = GamePrice(self.link)
 
         body = f"\n\nDear {self.username}\n\n\nThe price for the item you tracked has changed,\n check it out here {self.link}\nPrice Is {scrapper.get_the_price()}\nThe item name is{scrapper.get_name()}\nThank You\n\nPrice Checker"
 
         # Setting up the email text
         msg = MIMEText(body)
-        msg['From'] = MY_EMAIL_ADDRESS
+        msg['From'] = EMAIL_ADDRESS
         msg ['To'] = self.user_email
         msg['Subject'] = "Price Track"
     
         #Specifying Which email i am sending to and fro
-        send_from = MY_EMAIL_ADDRESS
+        send_from = EMAIL_ADDRESS
         to = self.user_email
 
         #Checking if there is no error before sending the email
@@ -35,7 +36,7 @@ class sendEmail():
 
             server  = smtplib.SMTP_SSL('smtp.gmail.com',465) #specifying the server
             server.ehlo()
-            server.login(MY_EMAIL_ADDRESS,MY_PASSWORD)
+            server.login(EMAIL_ADDRESS,MY_PASSWORD)
             server.sendmail(send_from,to,msg.as_string())
             server.close()
             print("Email Has Been Send!!")
