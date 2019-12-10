@@ -27,11 +27,6 @@ header {
     align-items: center;
 }
 
-::placeholder {
-    color: #ec008c;
-}
-
 .form-control {
-    font-size: 0.8em;
     width: 80%;
 }
