@@ -1,23 +1,9 @@
-html {
-    width: 100%;
-    height: 100%;
-    display: table;
-}
-
-body {
-    width: 100%;
-    display: table-cell;
-}
-
-html,
-body {
-    margin: 0px;
-    padding: 0px;
-}
+* {}
 
 header {
     color: #ec008c;
     font-family: 'Modak', cursive;
+    font-size: 42px;
     text-align: center;
 }
 
@@ -28,5 +14,6 @@ header {
 }
 
 .form-control {
-    width: 80%;
+    height: 40px;
+    font-size: 20px;
 }
